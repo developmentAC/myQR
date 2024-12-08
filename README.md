@@ -51,7 +51,8 @@ poetry run myqr --client qr
 - Pick your colours
 - Select size and boarder width of the qr `.png` file
 - Select the `Generate QR Code` button.
-- Check the output directory: `0_out/` for your `.png` file.
+- View the QRcode as a `.png` image that will appear.
+- Check the output directory: `0_out/` for your `.png` file, or save it by right-clicking on the image itself.
 
 ## A work in progress
 

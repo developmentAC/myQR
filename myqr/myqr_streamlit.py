@@ -2,6 +2,9 @@ import streamlit as st
 import qrcode
 import os
 import io
+from PIL import Image
+
+# import local files 
 from myqr import (
     fileOps as fo,
 )  # input local file to assist with file operations
@@ -24,8 +27,22 @@ def generate_qrcode(data, color, bgcolor, box_size, border, fname):
     qr.make(fit=True)
 
     img = qr.make_image(fill_color=color, back_color=bgcolor)  # "#23dda0"
-    saveFile(bgcolor, color, fname, img, qr)
+    savedFile = saveFile(bgcolor, color, fname, img, qr)
 
+#### view png file
+
+    # Upload PNG file
+    # uploaded_file = st.file_uploader("Choose a PNG file", type=["png"])
+
+    if savedFile is not None:
+        # Open and display the PNG image
+        image = Image.open(savedFile)
+        # st.image(image, caption="Uploaded PNG", use_column_width=True)
+        st.image(image, caption="Uploaded PNG",  use_container_width=True)
+
+
+
+####
 
 # end of generate_qrcode()
 
@@ -45,7 +62,7 @@ def saveFile(bgcolor, color, fname: str, img, qr) -> None:
         img.save(fname)
         st.success(f"Saved file as {fname}")
 
-
+    return fname
 # end of saveFile()
 
 

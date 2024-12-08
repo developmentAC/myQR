@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "myqr"
-version = "0.1.0"
+version = "0.1.2"
 description = ""
 authors = ["Oliver Bonham-Carter <obonhamcarter@allegheny.edu>"]
 readme = "README.md"
@@ -12,6 +12,7 @@ typer = "^0.15.1"
 rich = "^13.9.4"
 black = "^24.10.0"
 qrcode = "^8.0"
+image = "^1.5.33"
 
 
 [tool.poetry.scripts]

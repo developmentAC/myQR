@@ -5,7 +5,7 @@ import typer
 import os
 
 DATE = "7 Dec 2024"
-VERSION = "v0.1.0"
+VERSION = "v0.1.2"
 AUTHOR = "Oliver Bonham-Carter"
 AUTHORMAIL = "obonhamcarter@allegheny.edu"
 
