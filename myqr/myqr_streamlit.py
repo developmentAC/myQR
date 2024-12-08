@@ -32,7 +32,7 @@ def generate_qrcode(data, color, bgcolor, box_size, border, fname):
 #### view png file
 
     # Upload PNG file
-    # uploaded_file = st.file_uploader("Choose a PNG file", type=["png"])
+    # savedFile = st.file_uploader("Choose a PNG file", type=["png"])
 
     if savedFile is not None:
         # Open and display the PNG image
