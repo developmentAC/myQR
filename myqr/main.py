@@ -4,8 +4,6 @@ from rich.console import Console
 import typer
 import os
 
-
-
 DATE = "7 Dec 2024"
 VERSION = "v0.1.0"
 AUTHOR = "Oliver Bonham-Carter"
@@ -14,6 +12,7 @@ AUTHORMAIL = "obonhamcarter@allegheny.edu"
 # create a Typer object to support the command-line interface
 cli = typer.Typer()
 console = Console()
+
 
 @cli.command()
 def main(client: str = "", bighelp: bool = False):
@@ -31,7 +30,8 @@ def main(client: str = "", bighelp: bool = False):
 
     elif bighelp:
         bigHelp()
-        exit()# end of main()
+        exit()  # end of main()
+
 
 # end of main()
 
@@ -39,14 +39,14 @@ def main(client: str = "", bighelp: bool = False):
 def bigHelp():
     """Helper function"""
 
-    # console.print(f"[bold green]{banner0_str}")
-    # console.print(banner0_str, style=random.choice(colorWords_list))
-
     h_str = "   " + DATE + " | version: " + VERSION + " |" + AUTHOR + " | " + AUTHORMAIL
     console.print(f"[bold green] {len(h_str) * '-'}")
     console.print(f"[bold yellow]{h_str}")
     console.print(f"[bold green] {len(h_str) * '-'}")
 
-    console.print(f"\n\t:coffee:[bold green] Command: [bold yellow]poetry run myqr --client qr")
+    console.print(
+        f"\n\t:coffee:[bold green] Command: [bold yellow]poetry run myqr --client qr"
+    )
+
 
 # end of bigHelp()
