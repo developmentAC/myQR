@@ -1,0 +1,6 @@
+0_out/
+poetry.lock
+__pycache__
+.DS_Store
+.streamlit
+.bash_history

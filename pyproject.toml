@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "myqr"
+version = "0.1.0"
+description = ""
+authors = ["Oliver Bonham-Carter <obonhamcarter@allegheny.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.40.2"
+typer = "^0.15.1"
+rich = "^13.9.4"
+black = "^24.10.0"
+qrcode = "^8.0"
+
+
+[tool.poetry.scripts]
+myqr = "myqr.main:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
