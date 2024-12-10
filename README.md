@@ -24,7 +24,7 @@
 
 `poetry install`
 
-Below are commands to run MyQR using a Docker container which houses all necessary libraries and software for MyQR to run.
+Below are commands to run MyQR using a Poetry virtual environment that manages all necessary libraries and software for MyQR to run.
 
 - Basic help to run the project
 
