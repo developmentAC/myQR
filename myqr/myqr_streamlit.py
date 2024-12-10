@@ -4,7 +4,7 @@ import os
 import io
 from PIL import Image
 
-# import local files 
+# import local files
 from myqr import (
     fileOps as fo,
 )  # input local file to assist with file operations
@@ -16,9 +16,8 @@ OUTPUTDIR = "0_out/"
 # Date: 7th Dec 2024
 
 
-# Function to generate QR code with customization
 def generate_qrcode(data, color, bgcolor, box_size, border, fname):
-    # Generate the QR code
+    """Function to generate QR code with customization"""
 
     qr = qrcode.QRCode(version=1, box_size=box_size, border=border)
 
@@ -29,26 +28,20 @@ def generate_qrcode(data, color, bgcolor, box_size, border, fname):
     img = qr.make_image(fill_color=color, back_color=bgcolor)  # "#23dda0"
     savedFile = saveFile(bgcolor, color, fname, img, qr)
 
-#### view png file
-
-    # Upload PNG file
-    # savedFile = st.file_uploader("Choose a PNG file", type=["png"])
+    #### view png file
 
     if savedFile is not None:
         # Open and display the PNG image
         image = Image.open(savedFile)
         # st.image(image, caption="Uploaded PNG", use_column_width=True)
-        st.image(image, caption="Uploaded PNG",  use_container_width=True)
+        st.image(image, caption="Uploaded PNG", use_container_width=True)
 
-
-
-####
 
 # end of generate_qrcode()
 
 
 def saveFile(bgcolor, color, fname: str, img, qr) -> None:
-
+    """Function to save the image to a file. Check whether filename exists before saving."""
     img = qr.make_image(fill_color=color, back_color=bgcolor)  # "#23dda0"
 
     fo.checkDataDir(OUTPUTDIR)
@@ -63,11 +56,13 @@ def saveFile(bgcolor, color, fname: str, img, qr) -> None:
         st.success(f"Saved file as {fname}")
 
     return fname
+
+
 # end of saveFile()
 
 
-# Streamlit app main function
 def app():
+    """Streamlit main app function."""
     # App title and description
     st.title("Hey! It's MyQR: An Interactive QR Code Generator!")
     st.write("Generate QR codes with customizable styles!")

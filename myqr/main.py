@@ -16,7 +16,7 @@ console = Console()
 
 @cli.command()
 def main(client: str = "", bighelp: bool = False):
-    """Say hello to the person having a name of first, middle and last name"""
+    """Front end of the program."""
 
     if client.lower() == "qr":
 
@@ -37,7 +37,7 @@ def main(client: str = "", bighelp: bool = False):
 
 
 def bigHelp():
-    """Helper function"""
+    """Helper function -- give available command line prompts."""
 
     h_str = "   " + DATE + " | version: " + VERSION + " |" + AUTHOR + " | " + AUTHORMAIL
     console.print(f"[bold green] {len(h_str) * '-'}")
