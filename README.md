@@ -24,7 +24,7 @@
 
 `poetry install`
 
-Below are commands to run BeagleTM2 using a Docker container which houses all necessary libraries and software for BeagleTM.
+Below are commands to run MyQR using a Docker container which houses all necessary libraries and software for MyQR to run.
 
 - Basic help to run the project
 
