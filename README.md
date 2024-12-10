@@ -34,7 +34,7 @@ poetry run myqr --help
 - Involved help to run the project
 
 ``` bash
-poetry run myqr --help
+poetry run myqr --bighelp
 ```
 
 - Actual command to engage the program
