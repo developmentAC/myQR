@@ -19,7 +19,7 @@
 
 ### Command Summary
 
-* The whole project was written in poetry and uses the `Streamlit` and `qrcode` library. Poetry manages these libraries for you so that you never have to think about them!
+* The whole project was written in poetry and uses the [Streamlit](https://docs.streamlit.io/) and the [qrcode](https://pypi.org/project/qrcode/) library. [Poetry](https://python-poetry.org/docs/) manages these libraries for you so that you never have to think about them!
 * To engage poetry initially, use the following command from the root of the project. Note: the *root of the project* is the directory where the file, `pyproject.toml` resides.
 
 `poetry install`
