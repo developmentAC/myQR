@@ -26,6 +26,7 @@ def generate_qrcode(data, color, bgcolor, box_size, border, fname):
     qr.make(fit=True)
 
     img = qr.make_image(fill_color=color, back_color=bgcolor)  # "#23dda0"
+
     savedFile = saveFile(bgcolor, color, fname, img, qr)
 
     #### view png file
@@ -47,6 +48,9 @@ def saveFile(bgcolor, color, fname: str, img, qr) -> None:
     fo.checkDataDir(OUTPUTDIR)
     fname = OUTPUTDIR + fname
 
+    # check if the filename is already taken. If so, add counter to the filename.
+    fname = save_with_unique_filename(fname)
+
     if os.path.exists(fname):
         st.error(
             f"Attention: The file, {fname}, already exists! Please change the filename above."
@@ -61,6 +65,23 @@ def saveFile(bgcolor, color, fname: str, img, qr) -> None:
 # end of saveFile()
 
 
+def save_with_unique_filename(file_path):
+    # Check if the file exists
+    if not os.path.exists(file_path):
+        return file_path  # If file doesn't exist, return the original path
+
+    base, ext = os.path.splitext(file_path)  # Separate file name and extension
+    counter = 1  # Start counting from 1
+
+    while True:
+        # Format the new file name with a number, e.g., file_01.txt
+        new_filename = f"{base}_{counter:02d}{ext}"
+
+        if not os.path.exists(new_filename):
+            return new_filename  # Return new filename if it doesn't exist
+        counter += 1  # Increment counter to try the next number
+
+
 def app():
     """Streamlit main app function."""
     # App title and description
@@ -72,8 +93,10 @@ def app():
         "Enter the data for the QR Code:", "https://www.oliverbonhamcarter.com"
     )
 
+    suggestedFileName = "myQRCode.png"
+
     # # User input for file name
-    fname = st.text_input("Enter the filename to save the QRcode", "myQRcode.png")
+    fname = st.text_input("Enter the filename to save the QRcode", suggestedFileName)
 
     # Customization options for the QR code
     color = st.color_picker("Select QR Code color", "#23dda0")  # Default color is cyan
