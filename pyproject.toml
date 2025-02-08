@@ -15,7 +15,6 @@ qrcode = "^8.0"
 image = "^1.5.33"
 black = "^25.1.0"
 
-
 [tool.poetry.scripts]
 myqr = "myqr.main:cli"
 
