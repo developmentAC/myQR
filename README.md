@@ -1,4 +1,4 @@
-# MyQR: An Interactive QR code Generator
+# MyQR: An Interactive QR Code Generator
 
 - Oliver Bonham-Carter, [Web](https://www.oliverbonhamcarter.com/)
 - email: obonhamcarter@allegheny.edu
