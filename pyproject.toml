@@ -10,10 +10,13 @@ readme = "README.md"
 python = "^3.10"
 streamlit = "^1.40.2"
 typer = "^0.15.1"
-rich = "^13.9.4"
+#dev rich = "^13.9.4"
+rich = "^14.0.0"
 qrcode = "^8.0"
 image = "^1.5.33"
 black = "^25.1.0"
+django = "^5.1.8"
+
 
 [tool.poetry.scripts]
 myqr = "myqr.main:cli"
