@@ -6,16 +6,14 @@ authors = ["Oliver Bonham-Carter <obonhamcarter@allegheny.edu>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-#python = "^3.11"
 python = "^3.10"
-streamlit = "^1.40.2"
-typer = "^0.15.1"
-#dev rich = "^13.9.4"
+streamlit = "^1.46.1"
+typer = "^0.16.0"
 rich = "^14.0.0"
-qrcode = "^8.0"
+qrcode = "^8.2"
 image = "^1.5.33"
 black = "^25.1.0"
-django = "^5.1.8"
+django = "^5.2.3"
 
 
 [tool.poetry.scripts]
