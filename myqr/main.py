@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import subprocess
+import sys
+
 from rich.console import Console
 import typer
-import os
 
 DATE = "7 Dec 2024"
 VERSION = "v0.1.2"
@@ -15,28 +17,29 @@ console = Console()
 
 
 @cli.command()
-def main(client: str = "", bighelp: bool = False):
+def main(bighelp: bool = False):
     """Front end of the program."""
 
-    if client.lower() == "qr":
+    if bighelp:
+        big_help()
+        raise typer.Exit()  # end of main()
 
-        console.print(
-            "\t:dog:[bold yellow] QR code generator.\n\tStarting browser version. Use Control-C to exit from Command Line.[bold yellow]"
-        )
-        console.print(
-            f"\t:coffee:[bold green] Command: [bold yellow] Getting browser ready ..."
-        )
-        os.system("poetry run streamlit run myqr/myqr_streamlit.py")
-
-    elif bighelp:
-        bigHelp()
-        exit()  # end of main()
+    console.print(
+        "\t:dog:[bold yellow] QR code generator.\n\tStarting browser version. Use Control-C to exit from Command Line.[bold yellow]"
+    )
+    console.print(
+        "\t:coffee:[bold green] Command: [bold yellow] Getting browser ready ..."
+    )
+    subprocess.run(
+        [sys.executable, "-m", "streamlit", "run", "myqr/myqr_streamlit.py"],
+        check=False,
+    )
 
 
 # end of main()
 
 
-def bigHelp():
+def big_help():
     """Helper function -- give available command line prompts."""
 
     h_str = "   " + DATE + " | version: " + VERSION + " |" + AUTHOR + " | " + AUTHORMAIL
@@ -45,8 +48,13 @@ def bigHelp():
     console.print(f"[bold green] {len(h_str) * '-'}")
 
     console.print(
-        f"\n\t:coffee:[bold green] Command: [bold yellow]poetry run myqr --client qr"
+        "\n\t:coffee:[bold green] Command: [bold yellow]uv run myqr"
     )
 
 
-# end of bigHelp()
+def cli_entrypoint() -> None:
+    """Package entrypoint for the `myqr` console script."""
+    cli()
+
+
+# end of big_help()

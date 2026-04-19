@@ -2,7 +2,7 @@
 
 - Oliver Bonham-Carter, [Web](https://www.oliverbonhamcarter.com/)
 - email: obonhamcarter@allegheny.edu
-- Date: 7th December 2024
+- Date: 19 April 2026
 
 ---
 
@@ -11,7 +11,7 @@
 ---
 
 ## Table of contents
-- [MyQR: An Interactive QR code Generator](#myqr-an-interactive-qr-code-generator)
+- [MyQR: An Interactive QR Code Generator](#myqr-an-interactive-qr-code-generator)
   - [Table of contents](#table-of-contents)
     - [Command Summary](#command-summary)
     - [Creating QRcodes With Browser Tool](#creating-qrcodes-with-browser-tool)
@@ -19,28 +19,34 @@
 
 ### Command Summary
 
-* The whole project was written in poetry and uses the [Streamlit](https://docs.streamlit.io/) and the [qrcode](https://pypi.org/project/qrcode/) library. [Poetry](https://python-poetry.org/docs/) manages these libraries for you so that you never have to think about them!
-* To engage poetry initially, use the following command from the root of the project. Note: the *root of the project* is the directory where the file, `pyproject.toml` resides.
+* The project uses [uv](https://docs.astral.sh/uv/) and the [Streamlit](https://docs.streamlit.io/) and [qrcode](https://pypi.org/project/qrcode/) libraries.
+* Use the following command from the project root (the directory containing `pyproject.toml`) to create/sync the environment and install dependencies.
 
-`poetry install`
+`uv sync`
 
-Below are commands to run MyQR using a Poetry virtual environment that manages all necessary libraries and software for MyQR to run.
+Below are commands to run MyQR using the UV-managed virtual environment.
 
 - Basic help to run the project
 
 ``` bash
-poetry run myqr --help
+uv run myqr --help
 ```
 - Involved help to run the project
 
 ``` bash
-poetry run myqr --bighelp
+uv run myqr --bighelp
 ```
 
 - Actual command to engage the program
 
 ``` bash
-poetry run myqr --client qr
+uv run myqr
+```
+
+- Run tests
+
+``` bash
+uv run pytest
 ```
 
 ### Creating QRcodes With Browser Tool

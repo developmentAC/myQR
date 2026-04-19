@@ -1,13 +1,10 @@
 import streamlit as st
 import qrcode
 import os
-import io
 from PIL import Image
 
-# import local files
-from myqr import (
-    fileOps as fo,
-)  # input local file to assist with file operations
+from myqr import file_ops as fo
+
 
 OUTPUTDIR = "0_out/"
 
@@ -25,15 +22,13 @@ def generate_qrcode(data, color, bgcolor, box_size, border, fname):
     qr.add_data(data)
     qr.make(fit=True)
 
-    img = qr.make_image(fill_color=color, back_color=bgcolor)  # "#23dda0"
-
-    savedFile = saveFile(bgcolor, color, fname, img, qr)
+    saved_file = save_file(bgcolor, color, fname, qr)
 
     #### view png file
 
-    if savedFile is not None:
+    if saved_file is not None:
         # Open and display the PNG image
-        image = Image.open(savedFile)
+        image = Image.open(saved_file)
         # st.image(image, caption="Uploaded PNG", use_column_width=True)
         st.image(image, caption="Uploaded PNG", use_container_width=True)
 
@@ -41,11 +36,11 @@ def generate_qrcode(data, color, bgcolor, box_size, border, fname):
 # end of generate_qrcode()
 
 
-def saveFile(bgcolor, color, fname: str, img, qr) -> None:
+def save_file(bgcolor, color, fname: str, qr) -> str:
     """Function to save the image to a file. Check whether filename exists before saving."""
     img = qr.make_image(fill_color=color, back_color=bgcolor)  # "#23dda0"
 
-    fo.checkDataDir(OUTPUTDIR)
+    fo.check_data_dir(OUTPUTDIR)
     fname = OUTPUTDIR + fname
 
     # check if the filename is already taken. If so, add counter to the filename.
@@ -62,7 +57,7 @@ def saveFile(bgcolor, color, fname: str, img, qr) -> None:
     return fname
 
 
-# end of saveFile()
+# end of save_file()
 
 
 def save_with_unique_filename(file_path):
@@ -80,6 +75,11 @@ def save_with_unique_filename(file_path):
         if not os.path.exists(new_filename):
             return new_filename  # Return new filename if it doesn't exist
         counter += 1  # Increment counter to try the next number
+
+
+def saveFile(bgcolor, color, fname: str, img, qr) -> str:
+    """Backward-compatible wrapper for older teaching materials."""
+    return save_file(bgcolor, color, fname, qr)
 
 
 def app():
@@ -113,7 +113,7 @@ def app():
     # Generate the QR code when the button is clicked
     if st.button("Generate QR Code"):
         if data:
-            qr_img = generate_qrcode(data, color, bgcolor, box_size, border, fname)
+            generate_qrcode(data, color, bgcolor, box_size, border, fname)
         else:
             st.warning("Please enter some data to generate the QR code!")
 
@@ -122,3 +122,14 @@ def app():
 
 if __name__ == "__main__":
     app()
+
+
+# # Hacky stuff required to be added to make it work without `streamlit run`:
+# if __name__ == "__main__":
+#     from streamlit.runtime.scriptrunner import get_script_run_ctx
+    
+#     if get_script_run_ctx() is None:
+#         from streamlit.web.cli import main
+#         import sys
+#         sys.argv = ['streamlit', 'run', __file__]
+#         main()
